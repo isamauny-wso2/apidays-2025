@@ -1,4 +1,4 @@
-# API Days 2025 - Conference Materials
+# APIDays 2025 / FOST - Conference Materials
 
 This repository contains presentation materials and supporting resources for API Days 2025 conference sessions focusing on AI integration with APIs and API governance.
 
