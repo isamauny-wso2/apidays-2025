@@ -1,0 +1,23 @@
+title Agent-LLM-Weather MCP Execution Flow
+
+participant User
+participant Agent
+participant LLM as LLM
+participant WeatherMCP as Weather MCP Server
+participant WeatherAPI as Weather API
+
+User->Agent: "Will I need an umbrella in Paris tomorrow?"
+
+Agent->LLM: "Will I need an umbrella in Paris tomorrow?" + Available tools (get_weather)
+LLM->Agent: Tool call decision:\n{\n  "tool": "get_weather",\n  "params": {\n    "location": "Paris",\n    "unit": "celsius"\n  }\n}
+Agent->WeatherMCP: Call get_weather\nwith location="Paris", unit="celsius"
+WeatherMCP->WeatherAPI: Fetch weather for Paris
+WeatherAPI->WeatherMCP: {\n  "temperature": 8.5,\n  ...  "precipitation_chance": 0.92\n}
+WeatherMCP->Agent: Result:\n{\n  "temperature": 8.5,\n  ...  "precipitation_chance": 0.92\n}
+Agent->LLM: Tool result + context:\n{\n  "tool_result": {\n    "temperature": 8.5,\n    ...  "precipitation_chance": 0.92\n  },\n  "user_question": "Will I need an umbrella in Paris tomorrow?"\n}
+
+note over LLM: LLM reads the weather data.\n"92% chance of rain and rainy\nconditions-> Recommend to use an umbrella."
+
+LLM->Agent: Final answer:\n"Yes, definitely bring an umbrella.\nThere's a 92% chance of rain\nand conditions are rainy with\nhigh humidity."
+
+Agent->User: "Yes, definitely bring an umbrella.\nThere's a 92% chance of rain\nand conditions are rainy with\nhigh humidity."
