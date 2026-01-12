@@ -14,7 +14,8 @@ Explores practical lessons learned from implementing AI capabilities with APIs i
 #### Governance-API-MCP
 Covers API governance strategies and the Model Context Protocol (MCP) for building AI agents that interact with APIs.
 
-- [Governance-API-MCP.pdf](Governance-API-MCP.pdf) - Complete presentation
+- Complete presentation: [Governance-API-MCP.pdf](Governance-API-MCP.pdf)
+- Recorded Video: [APIDays Video](https://www.youtube.com/watch?v=1eVEjoG4bEE)
 
 ### Supporting Materials
 
